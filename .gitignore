@@ -2,7 +2,7 @@
 __pycache__/
 
 # Environments
-venv/
+.venv/
 
 # VSCode
-vscode/
+.vscode/
