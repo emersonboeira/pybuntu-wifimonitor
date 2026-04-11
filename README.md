@@ -8,7 +8,8 @@ Uses the Ubuntu system ping command and the iw command
 
 ## Versions
 
-Ubtuntu = 24.04 \ 
+Ubtuntu = 24.04
+
 Python = 3.12.3
 
 ## Requirements on Ubuntu
