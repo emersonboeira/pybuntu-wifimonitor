@@ -7,9 +7,6 @@ from models.datacollector import DataCollector
 ROUTER_IP = "192.168.0.1"
 WIFI_INTERFACE = "wlo1"
 
-# csvconfig
-CSVHEADER = ["Timestamp", "Ping", "RSSI"]
-
 # measurements config
 TOTAL_TIME = 10 # seconds
 SAMPLE = 5 # seconds
