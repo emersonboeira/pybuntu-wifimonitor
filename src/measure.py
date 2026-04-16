@@ -1,6 +1,6 @@
 import signal
 
-from util import csvutil
+from util import csvutil, dirsutil
 from models.datacollector import DataCollector
 
 # project configs
@@ -28,7 +28,10 @@ signal.setitimer(signal.ITIMER_REAL, 1, wifi_collector.time_sample)
 
 # main loop
 try:
-    print("Starting...")
+    print("Creating Project Directories...")
+    dirsutil.creating()
+    print("Done!")
+    print("Starting Measurements...")
     while True:
         pass
 except SystemExit:

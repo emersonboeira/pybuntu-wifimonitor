@@ -1,13 +1,11 @@
-from pathlib import Path
 import csv
+from pathlib import Path
 from datetime import datetime
 
 def createfile(csvname):
     # defining the base directory and creating if it doesn't exist
     BASE_DIR = Path(__file__).resolve().parent.parent.parent
     DATA_DIR = str(BASE_DIR) + "/data"
-
-    Path(DATA_DIR).mkdir(parents=True, exist_ok=True)
 
     # creating the filename
     start_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
