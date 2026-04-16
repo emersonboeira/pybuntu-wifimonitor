@@ -1,0 +1,10 @@
+{
+    "device_config": {
+        "router_ip": "",
+        "wifi_interface": ""
+    },
+    "measurements_config": {
+        "sample_time": "",
+        "total_time": ""
+    }
+}
