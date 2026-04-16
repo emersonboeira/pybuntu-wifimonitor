@@ -1,26 +1,23 @@
 import signal
 
-from util import csvutil, dirsutil
+from util import csvutil, dirsutil, openconfig
 from models.datacollector import DataCollector
-
-# project configs
-ROUTER_IP = "192.168.0.1"
-WIFI_INTERFACE = "wlo1"
-
-# measurements config
-TOTAL_TIME = 10 # seconds
-SAMPLE = 5 # seconds
 
 # location constants
 OFFICE = "office"
 BEDROOM = "bedroom"
 LIVINGROOM = "livingroom"
 
+# creating the project's directories
+dirsutil.creating()
+# loading the project's configuration
+measconfig = openconfig.load_json()
+
 wifi_collector= DataCollector(
-    time_sample = SAMPLE,
-    time_limit = TOTAL_TIME,
-    devip = ROUTER_IP,
-    devint = WIFI_INTERFACE
+    time_sample = measconfig['measurements_config']['sample_time'],
+    time_limit = measconfig['measurements_config']['total_time'],
+    devip = measconfig['device_config']['router_ip'],
+    devint = measconfig['device_config']['wifi_interface']
     )
 
 signal.signal(signal.SIGALRM, wifi_collector.time_interruptor)
@@ -28,9 +25,6 @@ signal.setitimer(signal.ITIMER_REAL, 1, wifi_collector.time_sample)
 
 # main loop
 try:
-    print("Creating Project Directories...")
-    dirsutil.creating()
-    print("Done!")
     print("Starting Measurements...")
     while True:
         pass
