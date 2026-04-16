@@ -14,8 +14,8 @@ dirsutil.creating()
 measconfig = openconfig.load_json()
 
 wifi_collector= DataCollector(
-    time_sample = measconfig['measurements_config']['sample_time'],
-    time_limit = measconfig['measurements_config']['total_time'],
+    time_sample = int(measconfig['measurements_config']['sample_time']),
+    time_limit = int(measconfig['measurements_config']['total_time']),
     devip = measconfig['device_config']['router_ip'],
     devint = measconfig['device_config']['wifi_interface']
     )
