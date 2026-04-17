@@ -27,7 +27,8 @@ signal.setitimer(signal.ITIMER_REAL, 1, wifi_collector.time_sample)
 try:
     print("Starting Measurements...")
     while True:
-        pass
+         # without this the code was consuming 1 CPU core = 25% total CPU
+        signal.pause()
 except SystemExit:
     print("End.")
 
