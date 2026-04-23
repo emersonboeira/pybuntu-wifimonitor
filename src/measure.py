@@ -8,6 +8,10 @@ OFFICE = "office"
 BEDROOM = "bedroom"
 LIVINGROOM = "livingroom"
 
+# wifi type constats
+TWOGIG = "2G"
+FIVEGIG = "5G"
+
 # creating the project's directories
 dirsutil.creating()
 # loading the project's configuration
@@ -33,5 +37,5 @@ except SystemExit:
     print("End.")
 
 csvheader = wifi_collector.data_list[0].keys()
-csvname = csvutil.createfile(OFFICE)
+csvname = csvutil.createfile(OFFICE + FIVEGIG)
 csvutil.adddata(filename = csvname, header = csvheader, data = wifi_collector.data_list)
