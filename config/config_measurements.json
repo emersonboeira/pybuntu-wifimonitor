@@ -4,6 +4,8 @@
         "wifi_interface": "wifi"
     },
     "measurements_config": {
+        "location": "office",
+        "wifi_type": "5g",
         "sample_time": "5",
         "total_time": "10"
     }
