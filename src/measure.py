@@ -3,15 +3,6 @@ import signal
 from util import csvutil, dirsutil, openconfig
 from models.datacollector import DataCollector
 
-# location constants
-OFFICE = "office"
-BEDROOM = "bedroom"
-LIVINGROOM = "livingroom"
-
-# wifi type constats
-TWOGIG = "2G"
-FIVEGIG = "5G"
-
 # creating the project's directories
 dirsutil.creating()
 # loading the project's configuration
@@ -24,6 +15,12 @@ wifi_collector= DataCollector(
     devint = measconfig['device_config']['wifi_interface']
     )
 
+# filename - based on location and wifi type
+location = measconfig['measurements_config']['location']
+wifi_type = measconfig['measurements_config']['wifi_type']
+csvfilename = location + wifi_type
+
+# configuring the signal interruption
 signal.signal(signal.SIGALRM, wifi_collector.time_interruptor)
 signal.setitimer(signal.ITIMER_REAL, 1, wifi_collector.time_sample)
 
@@ -37,5 +34,5 @@ except SystemExit:
     print("End.")
 
 csvheader = wifi_collector.data_list[0].keys()
-csvname = csvutil.createfile(OFFICE + FIVEGIG)
+csvname = csvutil.createfile(csvname = csvfilename)
 csvutil.adddata(filename = csvname, header = csvheader, data = wifi_collector.data_list)
